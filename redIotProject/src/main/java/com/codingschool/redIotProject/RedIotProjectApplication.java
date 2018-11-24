@@ -38,9 +38,9 @@ public class RedIotProjectApplication {
 
 
 			//Check if Everything store in h2 db
-			personRepository.findAll().forEach(System.out::println);
-			deviceRepository.findAll().forEach(System.out::println);
-			roomRepository.findAll().forEach(System.out::println);
+			personRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword() + " " + x.getRole().toString()));
+			deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getType().toString()));
+			roomRepository.findAll().forEach(x->System.out.println(x.getName()));
 		};
 
 
