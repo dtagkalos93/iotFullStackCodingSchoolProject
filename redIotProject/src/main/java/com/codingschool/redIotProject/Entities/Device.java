@@ -1,21 +1,30 @@
 package com.codingschool.redIotProject.Entities;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Device {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-    private DeviceType type;
+    private String type;
     private boolean status;
     private String information;
 
     public Device() {
     }
 
-    public Device(long id, String name, DeviceType type, boolean status, String information) {
-        this.id = id;
+    public Device( String name, boolean status, String information,String type) {
         this.name = name;
-        this.type = type;
         this.status = status;
         this.information = information;
+        this.type = type;
     }
 
     public long getId() {
@@ -34,11 +43,11 @@ public class Device {
         this.name = name;
     }
 
-    public DeviceType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(DeviceType type) {
+    public void setType(String type) {
         this.type = type;
     }
 

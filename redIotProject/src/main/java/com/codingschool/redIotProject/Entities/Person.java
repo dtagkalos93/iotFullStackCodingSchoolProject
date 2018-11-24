@@ -1,25 +1,36 @@
 package com.codingschool.redIotProject.Entities;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Person {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String surname;
     private String mail;
     private String password;
-    private Role role;
+    private String role;
 
     public Person() {
 
     }
 
-    public Person(long id, String name, String surname, String mail, String password) {
-        this.id = id;
+
+
+    public Person(String name, String surname, String mail, String password, String role) {
         this.name = name;
         this.surname = surname;
         this.mail = mail;
         this.password = password;
-        this.role = null;
+        this.role = role;
     }
 
     public long getId() {
@@ -62,11 +73,11 @@ public class Person {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }
