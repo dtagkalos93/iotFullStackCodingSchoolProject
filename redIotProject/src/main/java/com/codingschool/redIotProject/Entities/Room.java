@@ -1,19 +1,30 @@
 package com.codingschool.redIotProject.Entities;
 
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ROOM")
 public class Room {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ROOM_ID")
     private long id;
+    @Column(name="NAME")
     private String name;
+    
+    @OneToMany(mappedBy="room")
+    private List<Device> devices;
 
     public Room() {
     }

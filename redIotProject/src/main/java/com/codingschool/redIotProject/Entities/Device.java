@@ -5,17 +5,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="DEVICE")
 public class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="DEVICE_ID")
     private long id;
+    @ManyToMany(mappedBy="devices")
+    private List<Person> person;
+    @Column(name="NAME")
     private String name;
+    @Column(name="TYPE")
     private String type;
+    @Column(name="STATUS")
     private boolean status;
+    @Column(name="INFORMATION")
     private String information;
+    
+    @ManyToOne
+    @JoinColumn(name="ROOM_ID")
+    private Room room;
+    
+    @ManyToOne
+    @JoinColumn(name="DEVICE_TYPE_ID")
+    private DeviceType devicetype;
 
     public Device() {
     }
