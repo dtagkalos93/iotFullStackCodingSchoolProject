@@ -22,7 +22,7 @@ public class Person {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PERSON_ID")
     private long id;
     
@@ -54,8 +54,7 @@ public class Person {
         this.surname = surname;
         this.mail = mail;
         this.password = password;
-        Role r=new Role();
-        r.setRole(role);
+        this.role=new Role(role);
         //this.role.setRole(role);
         //this.role = role;
     }

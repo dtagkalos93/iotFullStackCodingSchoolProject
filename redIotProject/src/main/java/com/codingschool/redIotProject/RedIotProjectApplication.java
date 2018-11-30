@@ -29,9 +29,9 @@ public class RedIotProjectApplication {
 			personRepository.save(new Person ("Lebron","James","lebron@james.com","123456","USER"));
 
 			//DeviceRepository
-			deviceRepository.save(new Device("Lionnel Messi",false,"",new DeviceType("Aircondition").toString()));
-			deviceRepository.save(new Device("Cristiano Ronaldo",true,"",new DeviceType("Lamp").toString()));
-			deviceRepository.save(new Device("Dele Ali",true,"channel-CosmoteSports1,vol-15",new DeviceType("Television").toString()));
+			deviceRepository.save(new Device("Lionnel Messi",false,"","Aircondition"));
+			deviceRepository.save(new Device("Cristiano Ronaldo",true,"","Lamp"));
+			deviceRepository.save(new Device("Dele Ali",true,"channel-CosmoteSports1,vol-15","Television" ));
 
 			//RoomRepository
 			/*roomRepository.save(new Room("Living Room"));
@@ -41,7 +41,7 @@ public class RedIotProjectApplication {
 
 			//Check if Everything store in h2 db
 			personRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword()));
-			deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getType().toString()));
+			deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getDevicetype().getTypeName()));
 			//roomRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()));
 		};
 

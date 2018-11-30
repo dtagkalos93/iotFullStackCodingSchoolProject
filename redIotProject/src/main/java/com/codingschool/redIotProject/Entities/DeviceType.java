@@ -20,7 +20,7 @@ public class DeviceType {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="DEVICE_TYPE_ID")
     private long id;
     @Column(name="DEVICE_TYPE_NAME")
