@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="PERSON_ID")
     private long id;
+    
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="person_device", joinColumns=@JoinColumn(name="device_id"), inverseJoinColumns=@JoinColumn(name="person_id"))
     private List<Device> devices;
@@ -36,23 +38,26 @@ public class Person {
     private String mail;
     @Column(name="PASSWORD")
     private String password;
-    @Column(name="ROLE")
-    private String role;
+    //@Column(name="ROLE")
+    //private String role;
     
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="ROLE_ID")
+    private Role role;
     
-
-    public Person() {
+	public Person() {
 
     }
-
-
 
     public Person(String name, String surname, String mail, String password, String role) {
         this.name = name;
         this.surname = surname;
         this.mail = mail;
         this.password = password;
-        this.role = role;
+        Role r=new Role();
+        r.setRole(role);
+        //this.role.setRole(role);
+        //this.role = role;
     }
 
     public long getId() {
@@ -94,12 +99,13 @@ public class Person {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public Role getRole() {
+		return role;
+	}
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+	public void setRole(Role role) {
+		this.role = role;
+	}
+    
 }

@@ -1,11 +1,16 @@
 package com.codingschool.redIotProject.Repositories;
 
 import com.codingschool.redIotProject.Entities.Person;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface PersonRepository extends JpaRepository<Person,Long> {
+	
+	List<Person> findByname(String name);
+    List<Person> findAll();
+    List<Person> findByNameContaining(String searchterm);
+    Person findByid(long id);
+    
 
-@RepositoryRestResource
-public interface PersonRepository extends CrudRepository<Person,Long> {
 }
