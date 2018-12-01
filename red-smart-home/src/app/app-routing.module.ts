@@ -4,6 +4,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent}
 
+  { path: 'top-menu', component: TopMenuComponent}
 ];
 
 @NgModule({
