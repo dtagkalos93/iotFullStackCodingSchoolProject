@@ -11,6 +11,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     MatIconModule,
     MatListModule,
     MatExpansionModule,
-    NgbModule
+    NgbModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
