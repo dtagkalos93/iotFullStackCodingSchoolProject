@@ -10,13 +10,15 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatExpansionModule } from '@angular/material';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     DashboardComponent,
-    HomePageComponent
+    HomePageComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,
