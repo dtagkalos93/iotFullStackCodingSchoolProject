@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RoomService {
 	List<Room> findAll();
-	Room findByname (String name);
-	Room findByid (long id);
-	
+	Room findByName (String name);
+	Room findById (long id);
+
 }

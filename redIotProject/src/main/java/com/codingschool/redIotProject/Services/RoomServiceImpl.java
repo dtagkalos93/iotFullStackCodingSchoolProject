@@ -9,22 +9,23 @@ import com.codingschool.redIotProject.Repositories.RoomRepository;
 
 @Service
 public class RoomServiceImpl implements RoomService {
-	
+
 	@Autowired
 	private RoomRepository roomRep;
-	
+
 	@Override
-    public List<Room> findAll() {
-    	return roomRep.findAll();
-    }
-	
-	@Override
-	public Room findByname (String name) {
-		return roomRep.findByname(name);
+	public List<Room> findAll() {
+		return roomRep.findAll();
 	}
-	
+
 	@Override
-	public Room findByid (long id) {
-		return roomRep.findByid(id);
+	public Room findByName (String name) {
+		return roomRep.findByName(name);
+	}
+
+	@Override
+	public Room findById (long id) {
+		return roomRep.findById(id);
 	}
 }
+

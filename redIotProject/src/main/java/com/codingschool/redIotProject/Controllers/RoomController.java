@@ -4,11 +4,12 @@ package com.codingschool.redIotProject.Controllers;
 import com.codingschool.redIotProject.Entities.Room;
 import com.codingschool.redIotProject.Services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("/room")
 public class RoomController {
 
 	/*
@@ -20,11 +21,19 @@ public class RoomController {
         this.roomService = roomService;
     }*/
 	@Autowired
-    private RoomService roomService;
-	
-	@RequestMapping("/room/")
-	public Room getRoomById (@RequestParam(value="id", defaultValue = "1") long id) {
-		return roomService.findByid(id);
+	private RoomService roomService;
+
+	@GetMapping
+	public List<Room> findAll(){
+		return roomService.findAll();
 	}
-	
+
+	@GetMapping("/{id}")
+	public Room findOne(@PathVariable long id) {
+		return roomService.findById(id);
+	}
+
+
+
+
 }
