@@ -4,22 +4,35 @@ package com.codingschool.redIotProject.Controllers;
 import com.codingschool.redIotProject.Entities.Device;
 import com.codingschool.redIotProject.Repositories.DeviceRepository;
 import com.codingschool.redIotProject.Services.DeviceService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @RestController
+@RequestMapping("/devices")
 public class DeviceController {
-    private DeviceRepository repository;
+
+    @Autowired
     private DeviceService deviceService;
 
-    public DeviceController(DeviceRepository repository, DeviceService deviceService) {
-        this.repository = repository;
-        this.deviceService = deviceService;
+    @GetMapping
+    public List<Device> findAll(){
+        return deviceService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Device findOne(@PathVariable long id) {
+        return deviceService.findById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Device create(@RequestBody Device d) {
+        return deviceService.save(d);
+    }
 
 }

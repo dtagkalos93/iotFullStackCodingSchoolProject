@@ -32,27 +32,27 @@ public class PersonController {
         this.repository = repository;
         this.personService = personService;
     }*/
-	
-	@Autowired
-	private PersonService personService;
-	
-	@GetMapping
-	public List<Person> findAll(){
-		return personService.findAll();
-	}
-	
-	@GetMapping("/{id}")
-    public Person findOne(@PathVariable int id) {
-        return personService.findByid(id);
+
+    @Autowired
+    private PersonService personService;
+
+    @GetMapping
+    public List<Person> findAll(){
+        return personService.findAll();
     }
- 
+
+    @GetMapping("/{id}")
+    public Person findOne(@PathVariable int id) {
+        return personService.findById(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Person create(@RequestBody Person person) {
         return personService.save(person);
     }
-	
-	
-	
+
+
+
 
 }
