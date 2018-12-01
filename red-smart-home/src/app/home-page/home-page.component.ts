@@ -14,12 +14,14 @@ export class HomePageComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+    
   }
 
   open(content) {
+    
     console.log('test');
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.user.username = `Closed with: ${result}`;
+      this.closeResult = `Closed with: ${result}`;
     });
   }
 
