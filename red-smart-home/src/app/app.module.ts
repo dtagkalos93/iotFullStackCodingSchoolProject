@@ -11,7 +11,9 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule }    from '@angular/common/http';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatListModule,
     MatExpansionModule,
     NgbModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
