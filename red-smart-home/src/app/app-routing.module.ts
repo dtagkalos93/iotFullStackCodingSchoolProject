@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home-page', component: HomePageComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
 
   { path: 'top-menu', component: TopMenuComponent}
 ];

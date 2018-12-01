@@ -24,14 +24,16 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
     };
-    // this.apiService.login(loginPayload).subscribe(data => {
-    //   if(data.status === 200) {
-    //     window.localStorage.setItem('token', data.result.token);
-    //     this.router.navigate(['dashboard']);
-    //   }else {
-    //     this.invalidLogin = true;
-    //     alert(data.message);
-    //   }
+    // // this.apiService.login(loginPayload).subscribe(data => {
+    // //   if(data.status === 200) {
+    // //     console.log('OK');
+    // //     // window.localStorage.setItem('token', data.result.token);
+    // //     // this.router.navigate(['dashboard']);
+    // //   }else {
+    // //     console.log('erro');
+    // //     // this.invalidLogin = true;
+    // //     // alert(data.message);
+    // //   }
     // });
   }
 

@@ -24,9 +24,9 @@ public class RedIotProjectApplication {
 	ApplicationRunner init (PersonRepository personRepository ,DeviceRepository deviceRepository , RoomRepository roomRepository){
 		return args -> {
 			//PersonaRepository
-			personRepository.save(new Person ("Michael","Jordan","michael@jordan.com","123456","ADMIN"));
-			personRepository.save(new Person ("Kobe","Bryant","kobe@bryant.com","123456","USER"));
-			personRepository.save(new Person ("Lebron","James","lebron@james.com","123456","USER"));
+			personRepository.save(new Person ("test1","Michael","Jordan","michael@jordan.com","123456","ADMIN"));
+			personRepository.save(new Person ("test2","Kobe","Bryant","kobe@bryant.com","123456","USER"));
+			personRepository.save(new Person ("test2","Lebron","James","lebron@james.com","123456","USER"));
 
 			//DeviceRepository
 			deviceRepository.save(new Device("Lionnel Messi",false,"","Aircondition"));

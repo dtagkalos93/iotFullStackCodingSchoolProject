@@ -29,7 +29,8 @@ public class Person {
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="person_device", joinColumns=@JoinColumn(name="device_id"), inverseJoinColumns=@JoinColumn(name="person_id"))
     private List<Device> devices;
-    
+    @Column(name="USERNAME")
+    private String username;
     @Column(name="PERSON_NAME")
     private String name;
     @Column(name="SURNAME")
@@ -49,7 +50,10 @@ public class Person {
 
     }
 
-    public Person(String name, String surname, String mail, String password, String role) {
+
+
+    public Person(String username, String name, String surname, String mail, String password, String role) {
+	    this.username = username;
         this.name = name;
         this.surname = surname;
         this.mail = mail;
@@ -106,5 +110,13 @@ public class Person {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
     
 }

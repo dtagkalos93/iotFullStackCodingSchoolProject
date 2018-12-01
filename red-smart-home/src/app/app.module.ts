@@ -15,10 +15,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-=======
+
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
@@ -28,8 +28,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     DashboardComponent,
     HomePageComponent,
     LoginComponent,
-    RegisterComponent
-=======
+    RegisterComponent,
     TopMenuComponent
   ],
   imports: [
@@ -45,7 +44,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatExpansionModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     MatTabsModule,
     HttpClientModule,
     MatButtonToggleModule
