@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs/internal/Observable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,9 +38,25 @@ import { RegisterComponent } from './register/register.component';
     MatExpansionModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: 'Bearer ' + token
+        }
+      });
+    }
+    return next.handle(req);
+  }
+}

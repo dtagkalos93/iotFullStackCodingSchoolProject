@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import { ApiService } from '../api.service';
 
 
@@ -11,7 +11,7 @@ import { ApiService } from '../api.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  invalidLogin: boolean = false;
+  invalidLogin = false;
 
 
   constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     const loginPayload = {
-      username: this.loginForm.controls.username.value,
+      email: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
-    }
+    };
     // this.apiService.login(loginPayload).subscribe(data => {
     //   if(data.status === 200) {
     //     window.localStorage.setItem('token', data.result.token);
