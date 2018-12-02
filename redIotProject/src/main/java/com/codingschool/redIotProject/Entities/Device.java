@@ -14,7 +14,7 @@ public class Device {
     @Column(name="DEVICE_ID")
     private long id;
     @ManyToMany(mappedBy="devices")
-    private List<Person> person;
+    private List<User> users;
     @Column(name="NAME")
     private String name;
     @Column(name="STATUS")

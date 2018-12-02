@@ -2,15 +2,12 @@ package com.codingschool.redIotProject;
 
 import com.codingschool.redIotProject.Entities.*;
 import com.codingschool.redIotProject.Repositories.DeviceRepository;
-import com.codingschool.redIotProject.Repositories.PersonRepository;
+import com.codingschool.redIotProject.Repositories.UserRepository;
 import com.codingschool.redIotProject.Repositories.RoomRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.awt.PageAttributes.MediaType;
-import java.util.stream.Stream;
 
 @SpringBootApplication
 
@@ -21,12 +18,12 @@ public class RedIotProjectApplication {
 	}
 	
 	@Bean
-	ApplicationRunner init (PersonRepository personRepository ,DeviceRepository deviceRepository , RoomRepository roomRepository){
+	ApplicationRunner init (UserRepository userRepository, DeviceRepository deviceRepository , RoomRepository roomRepository){
 		return args -> {
 			//PersonaRepository
-			personRepository.save(new Person ("test1","Michael","Jordan","michael@jordan.com","123456","ADMIN"));
-			personRepository.save(new Person ("test2","Kobe","Bryant","kobe@bryant.com","123456","USER"));
-			personRepository.save(new Person ("test2","Lebron","James","lebron@james.com","123456","USER"));
+			userRepository.save(new User("test1","Michael","Jordan","michael@jordan.com","123456","ADMIN"));
+			userRepository.save(new User("test2","Kobe","Bryant","kobe@bryant.com","123456","USER"));
+			userRepository.save(new User("test2","Lebron","James","lebron@james.com","123456","USER"));
 
 			//DeviceRepository
 			deviceRepository.save(new Device("Lionnel Messi",false,"","Aircondition"));
@@ -40,7 +37,7 @@ public class RedIotProjectApplication {
 
 
 			//Check if Everything store in h2 db
-			personRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword()));
+			userRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword()));
 			deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getDevicetype().getTypeName()));
 			//roomRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()));
 		};
