@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name="ROOM")
 public class Room {
@@ -22,6 +25,7 @@ public class Room {
     private long id;
     @Column(name="NAME")
     private String name;
+    
     
     @OneToMany(mappedBy="room")
     private List<Device> devices;
@@ -50,10 +54,12 @@ public class Room {
         this.name = name;
     }
     
+    
     public List<Device> getDevices() {
 		return devices;
 	}
-
+    
+    
 	public void setDevices(List<Device> devices) {
 		this.devices = devices;
 	}
