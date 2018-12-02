@@ -26,7 +26,7 @@ public class Room {
     @OneToMany(mappedBy="room")
     private List<Device> devices;
 
-    public Room() {
+	public Room() {
     }
 
     public Room( String name) {
@@ -49,4 +49,12 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public List<Device> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
 }

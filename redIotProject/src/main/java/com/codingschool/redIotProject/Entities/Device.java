@@ -26,26 +26,19 @@ public class Device {
     @JoinColumn(name="ROOM_ID")
     private Room room;
 
-    public DeviceType getDevicetype() {
-        return devicetype;
-    }
-
-    public void setDevicetype(DeviceType devicetype) {
-        this.devicetype = devicetype;
-    }
-
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="DEVICE_TYPE_ID")
     private DeviceType devicetype;
 
     public Device() {
     }
 
-    public Device( String name, boolean status, String information, String type) {
+    public Device( String name, boolean status, String information, DeviceType type, Room room) {
         this.name = name;
         this.status = status;
         this.information = information;
-        this.devicetype = new DeviceType(type);
+        this.devicetype = type;
+        this.room = room;
     }
 
     public long getId() {
@@ -79,5 +72,21 @@ public class Device {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+    
+    public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public DeviceType getDevicetype() {
+        return devicetype;
+    }
+
+    public void setDevicetype(DeviceType devicetype) {
+        this.devicetype = devicetype;
     }
 }

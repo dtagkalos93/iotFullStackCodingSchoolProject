@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class DeviceType {
     @OneToMany(mappedBy="devicetype")
     private List<Device> devices;
 
-    public DeviceType() {
+	public DeviceType() {
     }
 
     public DeviceType( String typeName) {
@@ -51,4 +52,13 @@ public class DeviceType {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
+    
+    public List<Device> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
+    
 }

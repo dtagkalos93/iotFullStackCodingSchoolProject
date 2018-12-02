@@ -1,15 +1,14 @@
 package com.codingschool.redIotProject.Repositories;
 
 import com.codingschool.redIotProject.Entities.Device;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
-@RepositoryRestResource
-public interface DeviceRepository extends CrudRepository<Device,Long> {
+public interface DeviceRepository extends JpaRepository<Device,Long> {
     List<Device> findByName(String name);
     List<Device> findAll();
     List<Device> findByNameContaining(String searchterm);
     Device findById(long id);
+    List<Device> findByRoomName(String roomname);
+    List<Device> findByRoomId(Long roomid);
 }
