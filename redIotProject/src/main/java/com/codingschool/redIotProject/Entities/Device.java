@@ -33,7 +33,15 @@ public class Device {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="DEVICE_TYPE_ID")
-    private DeviceType devicetype;
+    private DeviceType deviceType;
+
+    public DeviceType getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(DeviceType deviceType) {
+        this.deviceType = deviceType;
+    }
 
     public Device() {
     }
@@ -42,7 +50,7 @@ public class Device {
         this.name = name;
         this.status = status;
         this.information = information;
-        this.devicetype = type;
+        this.deviceType = type;
         this.room = room;
     }
 
@@ -89,12 +97,5 @@ public class Device {
 		this.room = room;
 	}
 
-	public DeviceType getDeviceΤype() {
-        return devicetype;
-    }
 
-	@JsonProperty
-    public void setDevicetype(DeviceType devicetype) {
-        this.devicetype = devicetype;
-    }
 }

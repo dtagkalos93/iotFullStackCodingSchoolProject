@@ -29,7 +29,7 @@ public class DeviceType {
     @Column(name="DEVICE_TYPE_NAME")
     private String typeName;
     
-    @OneToMany(mappedBy="devicetype")
+    @OneToMany(mappedBy="deviceType")
     private List<Device> devices;
 
 	public DeviceType() {

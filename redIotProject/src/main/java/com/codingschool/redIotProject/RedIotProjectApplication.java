@@ -115,7 +115,7 @@ public class RedIotProjectApplication {
 			devicetypeRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getTypeName()));
 			System.out.println(devicetypeRepository.findByTypeName("Air Condition").getTypeName());
 			System.out.println(devicetypeRepository.findByTypeName("Air Condition").getId());
-			System.out.println("device type of lionel messi: "+d1.getDeviceΤype().getTypeName());
+			System.out.println("device type of lionel messi: "+d1.getDeviceType().getTypeName());
 		};
 
 

@@ -12,6 +12,7 @@ export class DeviceComponent implements OnInit {
   devices: Device[];
   selectedDevice: Device;
 
+
     displayDialog: boolean;
 
   constructor(private deviceService: DeviceService) { }
@@ -19,8 +20,13 @@ export class DeviceComponent implements OnInit {
   ngOnInit() {
       this.deviceService.getDevices()
       .subscribe(data => {
-        console.log(data);
         this.devices = data;
+        for (let i = 0 ; i < this.devices.length; i++) {
+          console.log(this.devices[i].name);
+          console.log(this.devices[i].status + '');
+          console.log(this.devices[i].deviceType.typeName);
+        }
+
       });
 
   }

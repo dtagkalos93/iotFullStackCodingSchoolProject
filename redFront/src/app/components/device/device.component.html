@@ -7,7 +7,9 @@
             </div> -->
             <div class="ui-g-8 ui-md-8 filter-container">
                 <div style="position:relative;text-align: center">
-                    <h3>List of Devices</h3> <!--Try to pass and the room-->
+                    <h3>List of Devices </h3> <!--Try to pass and the room-->
+                    <div *ngFor="let device of devices">
+                      </div>
                 </div>
             </div>
              <div class="ui-g-4 ui-md-4" style="text-align:right">
@@ -17,34 +19,20 @@
      </div>
     </p-header>
     <p-footer>Choose from the list.</p-footer>
-    <ng-template let-devices pTemplate="gridItem">
-      <div style="padding:.5em" class="ui-g-12 ui-md-6">
-          <p-panel  [style]="{'text-align':'center'}">
-              <p-header>{{ devices.name }}</p-header>
-              <img src="assets/photos/{{devices.type.name | lowercase }}.png" width="60">
-              <div class="device-detail">Type: {{devices.type.name}}</div>
-              <div class="device-detail"*ngIf="devices.status" style="color: green">ON</div>
-                <div class="device-detail"*ngIf="!devices.status" style="color: red">OFF</div>
-              <hr class="ui-widget-content" style="border-top:0">
-              <button pButton type="button" icon="pi pi-search" (click)="selectDevice($event, devices)" style="margin-top:0"></button>
-          </p-panel>
-      </div>
-    </ng-template>
 
 
-
-    <ng-template let-devices pTemplate="listItem">
+    <!-- <ng-template let-devices pTemplate="listItem">
         <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
             <div class="ui-g-12 ui-md-3" style="text-align:center">
-                <img src="assets/photos/{{devices.type.name | lowercase }}.png" style="max-height:110px">
+                <img src="assets/photos/{{ devices.deviceType.typeName | lowercase }}.png" style="max-height:110px">
             </div>
             <div class="ui-g-12 ui-md-8 car-details">
                 <div class="ui-g">
                     <div class="ui-g-2 ui-sm-6">Name: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{devices.name}}</b></div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{ devices.name }</b></div>
 
                     <div class="ui-g-2 ui-sm-6">Type: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{devices.type.name}}</b></div>
+                    <div class="ui-g-10 ui-sm-6"><b>{{ devices.deviceType.typeName }}</b></div>
 
                     <div class="ui-g-2 ui-sm-6">Status: </div>
                     <div class="ui-g-10 ui-sm-6" *ngIf="devices.status"><b>ON</b></div>
@@ -59,27 +47,45 @@
             </div>
         </div>
     </ng-template>
+    <ng-template let-devices pTemplate="gridItem">
+      <div style="padding:.5em" class="ui-g-12 ui-md-6">
+          <p-panel  [style]="{'text-align':'center'}">
+              <p-header>{{ devices.name }}</p-header>
+               <img src="assets/photos/{{devices.deviceType.typeName | lowercase }}.png" width="60">
+              <div class="device-detail">Type: {{ devices.deviceType.deviceType }}</div>
+              <div class="device-detail"*ngIf="devices.status" style="color: green">ON</div>
+                <div class="device-detail"*ngIf="!devices.status" style="color: red">OFF</div>
+              <hr class="ui-widget-content" style="border-top:0">
+              <button pButton type="button" icon="pi pi-search" (click)="selectDevice($event, devices)" style="margin-top:0"></button>
+          </p-panel>
+      </div>
+    </ng-template> -->
+
+
+
+
 </p-dataView>
 
 
 
 
-<p-dialog header="{{selectedDevice?.type.name}} Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="225" (onAfterHide)="onDialogHide()">
+<!-- <p-dialog header="{{selectDevice.deviceType.typeName }} Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade"
+          [modal]="true" width="225" (onAfterHide)="onDialogHide()">
     <div class="ui-g" *ngIf="selectedDevice">
         <div class="ui-g-12" style="text-align:center">
-            <img src="assets/photos/{{selectedDevice.type.name | lowercase}}.png" style="max-height:80px;max-width: 80px">
+            <img src="assets/photos/{{selectedDevice | lowercase}}.png" style="max-height:80px;max-width: 80px">
           </div>
         <div class="ui-g-4">Name: </div>
         <div class="ui-g-8">{{selectedDevice.name}}</div>
 
         <div class="ui-g-4">Type: </div>
-        <div class="ui-g-8">{{selectedDevice.type.name}}</div>
+        <div class="ui-g-8">{{selectedDevice.deviceType.typeName}}</div>
 
         <div class="ui-g-4">Status: </div>
         <div class="ui-g-8" *ngIf="selectedDevice.status">ON</div>
         <div class="ui-g-8" *ngIf="!selectedDevice.status">OFF</div>
 
     </div>
-</p-dialog>
+</p-dialog> -->
 
 
