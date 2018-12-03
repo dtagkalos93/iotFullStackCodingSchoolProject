@@ -13,5 +13,8 @@ public interface DeviceService {
     List<Device> findByNameContaining(String searchterm);
     Device findById(long id);
     Device save(Device d);
+    Device changeStatus (Device newDevice, long id);
+    //Device turnOn (Device d);
+    //Device switchOff (Device d);
 
 }

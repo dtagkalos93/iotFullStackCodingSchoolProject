@@ -39,4 +39,26 @@ public class DeviceServiceImpl implements DeviceService{
     public Device save(Device d) {
         return deviceRep.save(d);
     }
+    
+    @Override
+    public Device changeStatus (Device newDevice, long id) {
+    	
+    	Device currentDevice = deviceRep.findById(id);
+    	currentDevice.setStatus(newDevice.isStatus());
+    	return deviceRep.save(currentDevice);
+    
+    }
+    
+    /*@Override
+    public Device turnOn (Device d) {
+    	d.setStatus(true);
+    	return deviceRep.save(d);
+    	
+    }
+    
+    @Override
+    public Device switchOff (Device d) {
+    	d.setStatus(false);
+    	return deviceRep.save(d);
+    }*/
 }
