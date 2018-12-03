@@ -5,5 +5,5 @@ export class Device {
   name: string;
   status: boolean;
   information: string;
-  deviceΤype: DeviceType;
+  deviceType: DeviceType;
 }

@@ -30,7 +30,6 @@ public class Device {
     @JoinColumn(name="ROOM_ID")
     private Room room;
     
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="DEVICE_TYPE_ID")
     private DeviceType deviceType;
