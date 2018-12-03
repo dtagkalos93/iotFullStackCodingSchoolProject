@@ -42,7 +42,7 @@ public class User {
     //@Column(name="ROLE")
     //private String role;
     
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="ROLE_ID")
     private Role role;
     
@@ -52,15 +52,15 @@ public class User {
 
 
 
-    public User(String username, String name, String surname, String mail, String password, String role) {
+    public User(String username, String name, String surname, String mail, String password, Role role) {
 	    this.username = username;
         this.name = name;
         this.surname = surname;
         this.mail = mail;
         this.password = password;
-        this.role=new Role(role);
+        //this.role=new Role(role);
         //this.role.setRole(role);
-        //this.role = role;
+        this.role = role;
     }
 
     public long getId() {

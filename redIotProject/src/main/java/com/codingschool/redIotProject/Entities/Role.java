@@ -28,11 +28,9 @@ public class Role {
     @OneToMany(mappedBy="role")
     private List<User> users;
 
-    public Role() {
-
-
+	public Role() {
     }
-
+	
     public Role( String role) {
         this.role = role;
     }
@@ -52,4 +50,12 @@ public class Role {
     public void setRole(String role) {
         this.role = role;
     }
+    
+    public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 }

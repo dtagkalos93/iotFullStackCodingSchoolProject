@@ -5,10 +5,11 @@ import {CardModule} from 'primeng/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MegaMenuComponent } from './components/mega-menu/mega-menu.component';
-import {TabMenuModule} from 'primeng/tabmenu';
+import {MenubarModule} from 'primeng/menubar';
 import { DeviceComponent } from './components/device/device.component';
 import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
+import {PanelModule} from 'primeng/panel';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import {DialogModule} from 'primeng/dialog';
     AppRoutingModule,
     BrowserAnimationsModule,
     CardModule,
-    TabMenuModule,
+    MenubarModule,
     DataViewModule,
-    DialogModule
+    DialogModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
