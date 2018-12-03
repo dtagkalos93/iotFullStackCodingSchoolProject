@@ -34,5 +34,12 @@ public class DeviceController {
     public Device create(@RequestBody Device d) {
         return deviceService.save(d);
     }
+    
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Device changeStatus(@RequestBody Device d, @PathVariable Long id) {
+        return deviceService.changeStatus(d, id);
+    }
+    
 
 }
