@@ -89,8 +89,7 @@ public class Device {
 		this.room = room;
 	}
 
-	@JsonIgnore
-	public DeviceType getDevicetype() {
+	public DeviceType getDeviceΤype() {
         return devicetype;
     }
 

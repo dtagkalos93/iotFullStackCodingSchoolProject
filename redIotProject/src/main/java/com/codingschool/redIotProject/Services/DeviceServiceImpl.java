@@ -20,6 +20,8 @@ public class DeviceServiceImpl implements DeviceService{
 
     @Override
     public List<Device> findAll(){
+
+
         return deviceRep.findAll();
     }
 

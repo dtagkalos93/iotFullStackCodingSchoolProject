@@ -18,7 +18,10 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit() {
       this.deviceService.getDevices()
-      .subscribe(devices => this.devices = devices);
+      .subscribe(data => {
+        console.log(data);
+        this.devices = data;
+      });
 
   }
 

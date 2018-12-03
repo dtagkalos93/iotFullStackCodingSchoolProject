@@ -10,6 +10,7 @@ import { DeviceComponent } from './components/device/device.component';
 import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
 import {PanelModule} from 'primeng/panel';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {PanelModule} from 'primeng/panel';
     MenubarModule,
     DataViewModule,
     DialogModule,
-    PanelModule
+    PanelModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
