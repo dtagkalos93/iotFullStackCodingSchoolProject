@@ -11,6 +11,9 @@ import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
 import {PanelModule} from 'primeng/panel';
 import { HttpClientModule } from '@angular/common/http';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     DataViewModule,
     DialogModule,
     PanelModule,
-    HttpClientModule
+    HttpClientModule,
+    InputSwitchModule,
+    FormsModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

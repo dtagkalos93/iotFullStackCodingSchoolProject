@@ -22,4 +22,9 @@ export class DeviceService {
         return response;
       }));
   }
+
+  updateDevice(device: Device) {
+    return this.httpClient.put<Device>
+            (this.DEVICES_URL + device.id, device);
+  }
 }

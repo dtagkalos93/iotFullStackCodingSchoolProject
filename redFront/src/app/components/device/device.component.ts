@@ -13,7 +13,8 @@ export class DeviceComponent implements OnInit {
   selectedDevice: Device;
 
 
-    displayDialog: boolean;
+  displayDialog: boolean;
+  change = false;
 
   constructor(private deviceService: DeviceService) { }
 
@@ -35,6 +36,21 @@ export class DeviceComponent implements OnInit {
     this.selectedDevice = device;
     this.displayDialog = true;
     event.preventDefault();
+  }
+
+  saveChanges() {
+    if (this.change) {
+    this.deviceService.updateDevice(this.selectedDevice)
+    .subscribe(data => {
+      this.displayDialog = false;
+      console.log('Update' , data);
+      this.selectedDevice = data;
+    });
+    }
+  }
+
+  handleChange(e) {
+    this.change = !this.change;
   }
 
   onDialogHide() {
