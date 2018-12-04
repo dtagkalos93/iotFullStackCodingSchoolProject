@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/persons")
+@RequestMapping("/users")
 public class UserController {
 
 
