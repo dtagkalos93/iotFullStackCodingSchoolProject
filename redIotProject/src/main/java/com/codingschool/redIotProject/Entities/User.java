@@ -1,6 +1,9 @@
 package com.codingschool.redIotProject.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +45,7 @@ public class User {
     //@Column(name="ROLE")
     //private String role;
     
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="ROLE_ID")
     private Role role;
@@ -102,11 +106,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    @JsonIgnore
     public Role getRole() {
 		return role;
 	}
 
+	@JsonProperty
 	public void setRole(Role role) {
 		this.role = role;
 	}
