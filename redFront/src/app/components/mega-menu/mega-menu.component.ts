@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { Room } from 'src/app/models/room';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-mega-menu',
@@ -7,18 +9,32 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./mega-menu.component.css']
 })
 export class MegaMenuComponent implements OnInit {
-
-  constructor() { }
+  room: Room[];
+  constructor(private homeSercive: HomeService) { }
 
   items: MenuItem[];
   ngOnInit() {
-    this.items = [
-      {label: 'Home', icon: 'fa fa-fw fa-bar-chart'},
-      {label: 'Room1', icon: 'fa fa-fw fa-calendar'},
-      {label: 'Room2', icon: 'fa fa-fw fa-book'},
-      {label: 'Room3', icon: 'fa fa-fw fa-support'},
-      {label: 'Room4', icon: 'fa fa-fw fa-twitter'}
-    ];
+    this.homeSercive.getRooms()
+      .subscribe(data => {
+        this.room = data;
+        // for (let i = 0 ; i < this.devices.length; i++) {
+        //   console.log(this.devices[i].name);
+        //   console.log(this.devices[i].status + '');
+        //   console.log(this.devices[i].deviceType.typeName);
+        // }
+
+        this.items = [
+          {label: 'Home', routerLink: ['/home']}
+        ];
+        for (let i = 0 ; i < this.room.length; i++) {
+          console.log(this.room[i].name);
+          this.items.push({label: `${this.room[i].name}`, routerLink: [`/room/${this.room[i].id}`]});
+          //   console.log(this.devices[i].name);
+          //   console.log(this.devices[i].status + '');
+          //   console.log(this.devices[i].deviceType.typeName);
+          }
+      });
+
   }
 
 }
