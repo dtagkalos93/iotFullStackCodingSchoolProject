@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Room } from '../models/room';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 
@@ -15,8 +15,10 @@ export class HomeService {
   constructor(private httpClient: HttpClient) { }
 
   getRooms(): Observable<Room[]> {
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('redHome:homered3') });
+
     return this.httpClient.get<any>
-      (this.ROOM_URL ).pipe(map(response => {
+      (this.ROOM_URL , { headers} ).pipe(map(response => {
         return response;
       }));
   }
