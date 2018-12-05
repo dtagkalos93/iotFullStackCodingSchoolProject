@@ -22,7 +22,7 @@
  <ng-template let-devices pTemplate="listItem">
         <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
             <div class="ui-g-12 ui-md-3" style="text-align:center">
-                <img src="assets/photos/{{ devices.deviceType.typeName | lowercase }}.png" style="max-height:110px">
+                <img src="assets/photos/{{ devices.deviceType.typeName | lowercase }}.jpg" style="max-height:110px">
             </div>
             <div class="ui-g-12 ui-md-8 car-details">
                 <div class="ui-g">
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="ui-g-12 ui-md-1 plus-icon">
-                <button pButton type="button" icon="pi pi-plus" (click)="selectDevice($event, devices)"></button>
+                <button pButton type="button" icon="fa fa-fw fa-bar-twitter" (click)="selectDevice($event, devices)"><span class="fa fa-fw fa-bar-twitter"> </span>></button>
             </div>
         </div>
     </ng-template>
@@ -54,7 +54,7 @@
               <div class="device-detail"*ngIf="devices.status" style="color: green">ON</div>
                 <div class="device-detail"*ngIf="!devices.status" style="color: red">OFF</div>
               <hr class="ui-widget-content" style="border-top:0">
-              <button pButton type="button" icon="pi pi-search" (click)="selectDevice($event, devices)" style="margin-top:0"></button>
+              <button pButton type="button" icon='fa fa-fw fa-bar-chart' (click)="selectDevice($event, devices)" style="margin-top:0"></button>
           </p-panel>
       </div>
     </ng-template>
@@ -80,8 +80,14 @@
         <div class="ui-g-8">{{selectedDevice.deviceType.typeName}}</div>
 
         <div class="ui-g-4">Status: </div>
-        <div class="ui-g-8" *ngIf="selectedDevice.status">ON</div>
-        <div class="ui-g-8" *ngIf="!selectedDevice.status">OFF</div>
+        <div class="ui-g-4" *ngIf="selectedDevice.status"  style="color: green" >ON</div>
+        <div class="ui-g-4" *ngIf="!selectedDevice.status" style="color: red">OFF</div>
+        <div class="ui-g-4">
+            <p-inputSwitch [(ngModel)]="selectedDevice.status" (onChange)="handleChange($event)"></p-inputSwitch>
+        </div>
+        <div >
+            <button pButton type="button" label="Save" class="ui-button-rounded" style="margin-left: 110%;" (click)=saveChanges()></button>
+        </div>
 
     </div>
 </p-dialog>
