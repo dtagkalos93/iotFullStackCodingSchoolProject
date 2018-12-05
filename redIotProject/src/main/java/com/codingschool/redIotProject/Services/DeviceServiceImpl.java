@@ -13,6 +13,7 @@ public class DeviceServiceImpl implements DeviceService{
     @Autowired
     private DeviceRepository deviceRep;
 
+
     @Override
     public List<Device> findByName(String name){
         return deviceRep.findByName(name);

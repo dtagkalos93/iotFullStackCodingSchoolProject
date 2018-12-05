@@ -51,12 +51,6 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-//	@Override
-//	public ResponseEntity<Object> createUser(User user) { return personRep.createUser(user); }
-
-//	@Override
-//	public ResponseEntity<Object> updateUser(User user,long id) { return personRep.updateUser(user,id); }
-
 	@Override
 	public void deleteById(long id){ personRep.deleteById(id);}
 

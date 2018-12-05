@@ -12,8 +12,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findAll();
     List<User> findByNameContaining(String searchterm);
     User findById(long id);
-//    ResponseEntity<Object> createUser(User user);
- //   ResponseEntity<Object> updateUser(User user,long id);
     void deleteById(long id);
 
 
