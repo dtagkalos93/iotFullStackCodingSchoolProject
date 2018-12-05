@@ -1,10 +1,10 @@
 package com.codingschool.redIotProject.Repositories;
 
 import com.codingschool.redIotProject.Entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
@@ -12,6 +12,9 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findAll();
     List<User> findByNameContaining(String searchterm);
     User findById(long id);
+//    ResponseEntity<Object> createUser(User user);
+ //   ResponseEntity<Object> updateUser(User user,long id);
+    void deleteById(long id);
 
 
 }

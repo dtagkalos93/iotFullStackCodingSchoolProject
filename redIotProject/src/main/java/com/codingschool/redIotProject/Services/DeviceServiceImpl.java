@@ -48,7 +48,11 @@ public class DeviceServiceImpl implements DeviceService{
     	return deviceRep.save(currentDevice);
     
     }
-    
+
+    @Override
+    public void deleteById(long id){ deviceRep.deleteById(id);}
+
+
     /*@Override
     public Device turnOn (Device d) {
     	d.setStatus(true);

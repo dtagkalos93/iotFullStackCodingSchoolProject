@@ -3,19 +3,14 @@ package com.codingschool.redIotProject.Controllers;
 
 import com.codingschool.redIotProject.Entities.User;
 import com.codingschool.redIotProject.Services.UserService;
-
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
-
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @CrossOrigin
@@ -26,21 +21,40 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // returns all users
     @GetMapping
     public List<User> findAll(){
         return userService.findAll();
     }
 
+
+    // Returns user by id
     @GetMapping("/{id}")
-    public User findOne(@PathVariable int id) {
+    public User findOne(@PathVariable long id) {
         return userService.findById(id);
     }
 
+
+    // Creates new User
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    User newUser(@RequestBody User newUser) {
+        return userService.save(newUser);
     }
+
+    // updates username found by id
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User updateUsername(@RequestBody User user, @PathVariable Long id) {
+        return userService.updateUsername(user, id);
+    }
+
+    // deletes user by id
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable long id) {
+        userService.deleteById(id);
+    }
+
 
     @RequestMapping("/login")
     public Map<String,String> login(@RequestBody User user) {
@@ -50,8 +64,6 @@ public class UserController {
         return tmp;
 
     }
-
-
 
 
 

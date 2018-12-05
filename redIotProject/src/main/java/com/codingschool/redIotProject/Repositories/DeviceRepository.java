@@ -11,4 +11,5 @@ public interface DeviceRepository extends JpaRepository<Device,Long> {
     Device findById(long id);
     List<Device> findByRoomName(String roomname);
     List<Device> findByRoomId(Long roomid);
+    void deleteById(long id);
 }

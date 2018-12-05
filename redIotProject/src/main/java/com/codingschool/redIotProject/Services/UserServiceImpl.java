@@ -1,11 +1,13 @@
 package com.codingschool.redIotProject.Services;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.codingschool.redIotProject.Entities.User;
 import com.codingschool.redIotProject.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,4 +39,25 @@ public class UserServiceImpl implements UserService {
 	public User save(User d) {
 		return personRep.save(d);
 	}
+
+	@Override
+	public User updateUsername(User newUser, long id) {
+
+		User currentUser = personRep.findById(id);
+		newUser.setId(id);
+		currentUser.setUsername(newUser.getUsername());
+
+		return personRep.save(currentUser);
+
+	}
+
+//	@Override
+//	public ResponseEntity<Object> createUser(User user) { return personRep.createUser(user); }
+
+//	@Override
+//	public ResponseEntity<Object> updateUser(User user,long id) { return personRep.updateUser(user,id); }
+
+	@Override
+	public void deleteById(long id){ personRep.deleteById(id);}
+
 }
