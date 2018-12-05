@@ -8,5 +8,6 @@ public interface RoomService {
 	List<Room> findAll();
 	Room findByName (String name);
 	Room findById (long id);
+//	void deleteById(long id);
 
 }

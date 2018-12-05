@@ -24,17 +24,24 @@ public class RoomController {
 	@Autowired
 	private RoomService roomService;
 
+	// returns all the rooms
 	@GetMapping
 	public List<Room> findAll(){
 		return roomService.findAll();
 	}
 
+	// returns a room by id
 	@GetMapping("/{id}")
 	public Room findOne(@PathVariable long id) {
 		return roomService.findById(id);
 	}
 
 
+//	// deletes a room by id-- does not work--
+//	@DeleteMapping("/{id}")
+//	public void deleteRoom(@PathVariable long id) {
+//		roomService.deleteById(id);
+//	}
 
 
 }

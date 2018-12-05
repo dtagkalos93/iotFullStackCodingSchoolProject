@@ -15,12 +15,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import static org.springframework.boot.SpringApplication.*;
+
 @SpringBootApplication
 
 public class RedIotProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RedIotProjectApplication.class, args);
+		run(RedIotProjectApplication.class, args);
 	}
 	
 	@Bean
@@ -36,7 +38,7 @@ public class RedIotProjectApplication {
 			userRepository.save(new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN")));
 			userRepository.save(new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN")));
 			userRepository.save(new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER")));
-
+			userRepository.save(new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER")));
 			//RoomRepository
 			Room l=new Room("Living Room");
 			

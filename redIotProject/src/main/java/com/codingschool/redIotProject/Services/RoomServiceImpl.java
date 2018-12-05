@@ -27,5 +27,8 @@ public class RoomServiceImpl implements RoomService {
 	public Room findById (long id) {
 		return roomRep.findById(id);
 	}
+
+//	@Override
+//	public void deleteById(long id){ roomRep.deleteById(id);}
 }
 

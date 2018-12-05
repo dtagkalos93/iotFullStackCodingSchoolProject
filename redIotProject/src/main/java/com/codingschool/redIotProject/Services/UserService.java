@@ -1,7 +1,8 @@
 package com.codingschool.redIotProject.Services;
 
-import java.util.List;
 import com.codingschool.redIotProject.Entities.User;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -10,7 +11,7 @@ public interface UserService {
     List<User> findByNameContaining(String searchterm);
     User findById(long id);
     User save(User d);
-    //void delete(Integer id);
-    //void delete(User p);
+    User updateUsername (User user, long id);
+    void deleteById(long id);
 
 }
