@@ -1,6 +1,7 @@
 package com.codingschool.redIotProject.Services;
 
 import com.codingschool.redIotProject.Entities.User;
+import com.codingschool.redIotProject.Repositories.RoleRepository;
 import com.codingschool.redIotProject.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,8 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository personRep;
+	@Autowired
+	private RoleRepository roleRep;
 
 	@Override
 	public List<User> findByName(String name){
@@ -37,7 +40,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User save(User d) {
-		return personRep.save(d);
+		
+		System.out.println("username: "+d.getUsername());
+		System.out.println("name: "+d.getName());
+		System.out.println("surname: "+d.getSurname());
+		System.out.println("password: "+d.getPassword());
+		System.out.println("mail: "+d.getMail());
+		System.out.println("role: "+d.getRoleToString());
+		String role = d.getRoleToString();
+		System.out.println("role1: "+role);
+		User newUser = new User(d.getUsername(),d.getName(),d.getSurname(),d.getPassword(),d.getMail(),roleRep.findByRole(role));
+		return personRep.save(newUser);
 	}
 
 	@Override

@@ -111,6 +111,11 @@ public class User {
     public Role getRole() {
 		return role;
 	}
+    
+    @JsonIgnore
+    public String getRoleToString() {
+    	return role.getRole();
+    }
 
 	@JsonProperty
 	public void setRole(Role role) {
