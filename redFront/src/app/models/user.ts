@@ -7,7 +7,7 @@ export class User {
   username: string;
   firstname: string;
   surname: string;
-  mai: string;
+  mail: string;
   password: string;
   role: Role;
   device: Device;
