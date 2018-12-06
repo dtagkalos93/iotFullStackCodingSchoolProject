@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import { Room } from 'src/app/models/room';
 import { HomeService } from 'src/app/services/home.service';
+import { User } from 'src/app/models/user';
+import { UserStateService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-mega-menu',
@@ -10,28 +12,23 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class MegaMenuComponent implements OnInit {
   room: Room[];
-  constructor(private homeSercive: HomeService) { }
-
+  constructor(private homeSercive: HomeService, private userStateService: UserStateService) { }
+  user: User;
   items: MenuItem[];
   ngOnInit() {
+    this.userStateService.userLoggedIn.subscribe(user => {
+      console.log(user.name);
+      this.user = user;
+    });
     this.homeSercive.getRooms()
       .subscribe(data => {
         this.room = data;
-        // for (let i = 0 ; i < this.devices.length; i++) {
-        //   console.log(this.devices[i].name);
-        //   console.log(this.devices[i].status + '');
-        //   console.log(this.devices[i].deviceType.typeName);
-        // }
-
         this.items = [
           {label: 'Home', routerLink: ['/home']}
         ];
         for (let i = 0 ; i < this.room.length; i++) {
           console.log(this.room[i].name);
           this.items.push({label: `${this.room[i].name}`, routerLink: [`/room/${this.room[i].id}`]});
-          //   console.log(this.devices[i].name);
-          //   console.log(this.devices[i].status + '');
-          //   console.log(this.devices[i].deviceType.typeName);
           }
       });
 
