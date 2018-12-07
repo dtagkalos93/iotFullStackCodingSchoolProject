@@ -13,13 +13,11 @@ import { UserStateService } from 'src/app/services/user-state.service';
 export class MegaMenuComponent implements OnInit {
   room: Room[];
   constructor(private homeSercive: HomeService, private userStateService: UserStateService) { }
-  user: User;
   items: MenuItem[];
   ngOnInit() {
-    this.userStateService.userLoggedIn.subscribe(user => {
-      console.log(user.name);
-      this.user = user;
-    });
+    const user = new User();
+    user.name = 'Dimitris';
+    this.userStateService.setUser(user);
     this.homeSercive.getRooms()
       .subscribe(data => {
         this.room = data;

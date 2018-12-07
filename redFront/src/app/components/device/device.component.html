@@ -16,9 +16,6 @@
         </div>
      </div>
     </p-header>
-    <p-footer>Choose from the list.</p-footer>
-
-
  <ng-template let-devices pTemplate="listItem">
         <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
             <div class="ui-g-12 ui-md-3" style="text-align:center">
@@ -41,7 +38,7 @@
                 </div>
             </div>
             <div class="ui-g-12 ui-md-1 plus-icon">
-                <button pButton type="button" icon="fa fa-fw fa-bar-twitter" (click)="selectDevice($event, devices)"><span class="fa fa-fw fa-bar-twitter"> </span>></button>
+                <button pButton type="button" icon="fa fa-plus" (click)="selectDevice($event, devices)" style="background-color: #f70000 ; border: #f70000" ></button>
             </div>
         </div>
     </ng-template>
@@ -54,7 +51,7 @@
               <div class="device-detail"*ngIf="devices.status" style="color: green">ON</div>
                 <div class="device-detail"*ngIf="!devices.status" style="color: red">OFF</div>
               <hr class="ui-widget-content" style="border-top:0">
-              <button pButton type="button" icon='fa fa-fw fa-bar-chart' (click)="selectDevice($event, devices)" style="margin-top:0"></button>
+              <button pButton type="button" icon='fa fa-plus' (click)="selectDevice($event, devices)" style="background-color: #f70000 ; border: #f70000" ></button>
           </p-panel>
       </div>
     </ng-template>

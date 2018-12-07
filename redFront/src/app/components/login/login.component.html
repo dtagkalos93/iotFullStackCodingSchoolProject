@@ -5,17 +5,17 @@
         <h5 class="card-title text-center">Sign In</h5>
 
           <div class="form-label-group emailDiv">
-            <label for="inputUsername">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username" required autofocus>
+            <label for="inputUsername"  >Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username"  [(ngModel)]="user.username" required autofocus>
           </div>
 
           <div class="form-label-group pwdDiv">
             <label for="inputPassword">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password"  required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" type="text" [(ngModel)]="user.password" required>
           </div>
 
 
-          <button class="btn btn-lg btn-primary btn-block text-uppercase btn-sing" type="submit"  >Sign in</button>
+          <button class="btn btn-lg btn-primary btn-block text-uppercase btn-sing" type="submit"clss="fao-ontrol"c click)="login()" >Sign in</button>
           <!-- <div *ngIf="invalidLogin" class="error">
             <div>Invalid credentials.</div>
           </div> -->

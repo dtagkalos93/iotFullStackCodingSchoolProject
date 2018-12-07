@@ -1,7 +1,15 @@
 .mainPage {
   display: flex;
   justify-content: center;
-  padding:22%
+  padding:21%;
+  background-image: url("../../../assets/photos/smart-home.jpg");
+ /* Full height */
+ height: 100%;
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 
 .logIn{

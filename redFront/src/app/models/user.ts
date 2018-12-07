@@ -5,11 +5,11 @@ import { Room } from './room';
 export class User {
   id: number;
   username: string;
-  firstname: string;
+  name: string;
   surname: string;
   mail: string;
   password: string;
-  role: Role;
-  device: Device;
-  room: Room;
+  // role: Role;
+  // device: Device;
+  // room: Room;
 }
