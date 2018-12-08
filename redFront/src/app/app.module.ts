@@ -15,13 +15,19 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
+import { MessagesModule } from 'primeng/components/messages/messages';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MegaMenuComponent,
     DeviceComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     HttpClientModule,
     InputSwitchModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    FieldsetModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

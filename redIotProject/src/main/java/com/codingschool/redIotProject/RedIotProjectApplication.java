@@ -1,10 +1,26 @@
 package com.codingschool.redIotProject;
 
 import com.codingschool.redIotProject.Entities.*;
+<<<<<<< HEAD
 import com.codingschool.redIotProject.Repositories.*;
+=======
+import com.codingschool.redIotProject.Repositories.DeviceRepository;
+import com.codingschool.redIotProject.Repositories.UserRepository;
+
+import com.codingschool.redIotProject.Repositories.RoomRepository;
+import com.codingschool.redIotProject.Repositories.DeviceTypeRepository;
+import com.codingschool.redIotProject.Repositories.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> master
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.boot.SpringApplication.run;
 
@@ -14,7 +30,12 @@ public class RedIotProjectApplication {
 
 	public static void main(String[] args) {
 		run(RedIotProjectApplication.class, args);
+		//SpringApplication.run(SpringSecurityApplication.class, args);
 	}
+	
+	@Autowired
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Bean
 	ApplicationRunner init (UserRepository userRepository, DeviceRepository deviceRepository , RoomRepository roomRepository, DeviceTypeRepository devicetypeRepository, RoleRepository roleRepository ){
@@ -26,11 +47,35 @@ public class RedIotProjectApplication {
 			roleRepository.save(admin);
 			roleRepository.save(user);
 			
+<<<<<<< HEAD
 			userRepository.save(new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN")));
 			userRepository.save(new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN")));
 			userRepository.save(new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER")));
 			userRepository.save(new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER")));
 
+=======
+			
+			
+			//userRepository.save(new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN")));
+			//userRepository.save(new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN")));
+			//userRepository.save(new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER")));
+			//userRepository.save(new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER")));
+			
+			User Vassilis = new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+			User Dimitris = new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN"));
+			User Aris = new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER"));
+			User Leni = new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER"));
+			User Alex = new User("alex","AlexName","AlexSurname","alex@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+			
+			
+			Vassilis.setPassword(bCryptPasswordEncoder.encode(Vassilis.getPassword()));
+            Dimitris.setPassword(bCryptPasswordEncoder.encode(Dimitris.getPassword()));
+            Aris.setPassword(bCryptPasswordEncoder.encode(Aris.getPassword()));
+            Leni.setPassword(bCryptPasswordEncoder.encode(Leni.getPassword()));
+            Alex.setPassword(bCryptPasswordEncoder.encode(Alex.getPassword()));
+			//RoomRepository
+			Room l=new Room("Living Room");
+>>>>>>> master
 			
 			//DeviceTypeRepository
 			DeviceType airco = new DeviceType("Air Condition");
@@ -91,10 +136,37 @@ public class RedIotProjectApplication {
 			deviceRepository.save(d8);
 			deviceRepository.save(d9);
 			deviceRepository.save(d10);
+<<<<<<< HEAD
 			deviceRepository.save(d11);
 			deviceRepository.save(d12);
 			deviceRepository.save(d13);
+=======
+			//deviceRepository.save(new Device("Lionnel Messi",false,"",devicetypeRepository.findByTypeName("Aircondition"),roomRepository.findByName("Living Room")));
+			//deviceRepository.save(new Device("Cristiano Ronaldo",true,"",light,b));
+			//deviceRepository.save(new Device("Dele Ali",true,"channel-CosmoteSports1,vol-15",tv,l));
+			
+			//assign devices to each user
+			List<Device> AlexD = Arrays.asList(d1,d2);
+			List<Device> VassilisD = Arrays.asList(d3,d4);
+			List<Device> DimitrisD = Arrays.asList(d5,d6);
+			List<Device> LeniD = Arrays.asList(d7,d8);
+			List<Device> ArisD = Arrays.asList(d9,d10);
+			
+			Alex.setDevices(AlexD);
+			Vassilis.setDevices(VassilisD);
+			Dimitris.setDevices(DimitrisD);
+			Leni.setDevices(LeniD);
+			Aris.setDevices(ArisD);
+			
+			//save users
+			userRepository.save(Alex);
+			userRepository.save(Vassilis);
+			userRepository.save(Dimitris);
+			userRepository.save(Aris);
+			userRepository.save(Leni);
+>>>>>>> master
 
+		
 			//Check if Everything store in h2 db
 			userRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword()));
 			//deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getDevicetype().getTypeName()));
