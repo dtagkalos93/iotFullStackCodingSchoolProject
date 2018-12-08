@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -56,14 +54,14 @@ public class UserController {
     }
 
 
-    @RequestMapping("/login")
-    public Map<String,String> login(@RequestBody User user) {
-        Map<String,String> tmp= new HashMap<>();
-        tmp.put("auth",(user.getMail().equals("email") && user.getPassword().equals("password"))+"");
-        tmp.put("role", user.getRole().toString());
-        return tmp;
-
-    }
+//    @RequestMapping("/login")
+//    public Map<String,String> login(@RequestBody User user) {
+//        Map<String,String> tmp= new HashMap<>();
+//        tmp.put("auth",(user.getMail().equals("email") && user.getPassword().equals("password"))+"");
+//        tmp.put("role", user.getRole().toString());
+//        return tmp;
+//
+//    }
 
 
 

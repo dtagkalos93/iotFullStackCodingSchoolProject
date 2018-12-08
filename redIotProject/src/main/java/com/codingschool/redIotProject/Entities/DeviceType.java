@@ -1,20 +1,7 @@
 package com.codingschool.redIotProject.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Table;
 
 
 @Entity
@@ -55,7 +42,7 @@ public class DeviceType {
         this.typeName = typeName;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public List<Device> getDevices() {
 		return devices;
 	}

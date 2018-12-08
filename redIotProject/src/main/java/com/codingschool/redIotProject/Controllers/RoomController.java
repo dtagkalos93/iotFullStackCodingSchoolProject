@@ -13,14 +13,6 @@ import java.util.List;
 @RequestMapping("/rooms")
 public class RoomController {
 
-	/*
-    private RoomRepository repository;
-    private RoomService roomService;
-
-    public RoomController(RoomRepository repository, RoomService roomService) {
-        this.repository = repository;
-        this.roomService = roomService;
-    }*/
 	@Autowired
 	private RoomService roomService;
 

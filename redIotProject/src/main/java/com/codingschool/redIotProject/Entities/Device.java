@@ -2,10 +2,6 @@ package com.codingschool.redIotProject.Entities;
 
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 @Entity
@@ -25,7 +21,7 @@ public class Device {
     @Column(name="INFORMATION")
     private String information;
     
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="ROOM_ID")
     private Room room;
@@ -86,12 +82,12 @@ public class Device {
         this.information = information;
     }
     
-    @JsonIgnore
+//    @JsonIgnore
     public Room getRoom() {
 		return room;
 	}
 
-    @JsonProperty
+//    @JsonProperty
 	public void setRoom(Room room) {
 		this.room = room;
 	}
