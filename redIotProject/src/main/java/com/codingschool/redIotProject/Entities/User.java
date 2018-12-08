@@ -29,10 +29,11 @@ public class User {
     @Column(name="PERSON_ID")
     private long id;
     
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="person_device", joinColumns=@JoinColumn(name="device_id"), inverseJoinColumns=@JoinColumn(name="person_id"))
+    @ManyToMany
+    @JoinTable(name="person_device", joinColumns=@JoinColumn(name="person_id"), inverseJoinColumns=@JoinColumn(name="device_id"))
     private List<Device> devices;
-    @Column(name="USERNAME")
+    
+	@Column(name="USERNAME")
     private String username;
     @Column(name="PERSON_NAME")
     private String name;
@@ -129,5 +130,14 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+    
+    public List<Device> getDevices() {
+		return devices;
+	}
+    
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
+
     
 }

@@ -8,6 +8,7 @@ import com.codingschool.redIotProject.Repositories.DeviceTypeRepository;
 import com.codingschool.redIotProject.Repositories.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.boot.ApplicationRunner;
@@ -35,10 +36,18 @@ public class RedIotProjectApplication {
 			roleRepository.save(admin);
 			roleRepository.save(user);
 			
-			userRepository.save(new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN")));
-			userRepository.save(new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN")));
-			userRepository.save(new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER")));
-			userRepository.save(new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER")));
+			
+			
+			//userRepository.save(new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN")));
+			//userRepository.save(new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN")));
+			//userRepository.save(new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER")));
+			//userRepository.save(new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER")));
+			
+			User Vassilis = new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+			User Dimitris = new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN"));
+			User Aris = new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER"));
+			User Leni = new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER"));
+			User Alex = new User("alex","AlexName","AlexSurname","alex@gmail.com","123456",roleRepository.findByRole("ADMIN"));
 			//RoomRepository
 			Room l=new Room("Living Room");
 			
@@ -109,7 +118,28 @@ public class RedIotProjectApplication {
 			//deviceRepository.save(new Device("Lionnel Messi",false,"",devicetypeRepository.findByTypeName("Aircondition"),roomRepository.findByName("Living Room")));
 			//deviceRepository.save(new Device("Cristiano Ronaldo",true,"",light,b));
 			//deviceRepository.save(new Device("Dele Ali",true,"channel-CosmoteSports1,vol-15",tv,l));
+			
+			//assign devices to each user
+			List<Device> AlexD = Arrays.asList(d1,d2);
+			List<Device> VassilisD = Arrays.asList(d3,d4);
+			List<Device> DimitrisD = Arrays.asList(d5,d6);
+			List<Device> LeniD = Arrays.asList(d7,d8);
+			List<Device> ArisD = Arrays.asList(d9,d10);
+			
+			Alex.setDevices(AlexD);
+			Vassilis.setDevices(VassilisD);
+			Dimitris.setDevices(DimitrisD);
+			Leni.setDevices(LeniD);
+			Aris.setDevices(ArisD);
+			
+			//save users
+			userRepository.save(Alex);
+			userRepository.save(Vassilis);
+			userRepository.save(Dimitris);
+			userRepository.save(Aris);
+			userRepository.save(Leni);
 
+		
 			//Check if Everything store in h2 db
 			userRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ x.getSurname()+" " + x.getMail() +" " +x.getPassword()));
 			//deviceRepository.findAll().forEach(x->System.out.println(x.getId()+" :: "+x.getName()+" "+ " " +x.getInformation() + " " + x.getDevicetype().getTypeName()));
