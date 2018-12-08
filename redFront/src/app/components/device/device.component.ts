@@ -13,6 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class DeviceComponent implements OnInit {
   devices: Device[];
   selectedDevice: Device;
+  imagesDevice: String[];
 
   navigationSubscription;
   displayDialog: boolean;
@@ -35,13 +36,23 @@ export class DeviceComponent implements OnInit {
       this.deviceService.getDevices(id)
       .subscribe(data => {
         this.devices = data;
-        // for (let i = 0 ; i < this.devices.length; i++) {
-        //   console.log(this.devices[i].name);
-        //   console.log(this.devices[i].status + '');
-        //   console.log(this.devices[i].deviceType.typeName);
-        // }
+        for (let i = 0 ; i < this.devices.length; i++) {
+          let stat;
+          if(this.devices[i].status){
+            stat= 'on';
+          }
+          else{
+            stat = 'off';
+          }
+
+            this.devices[i].image=this.devices[i].deviceType.typeName.replace(/\s/g, "").toLowerCase() + "_"+ stat;
+            console.log(this.devices[i].image);
+
+          
+         }
 
       });
+      
   }
 
   ngOnInit() {
@@ -51,6 +62,7 @@ export class DeviceComponent implements OnInit {
 
   selectDevice(event: Event, device: Device) {
     this.selectedDevice = device;
+    console.log(this.selectedDevice);
     this.displayDialog = true;
     event.preventDefault();
   }
@@ -67,6 +79,14 @@ export class DeviceComponent implements OnInit {
   }
 
   handleChange(e) {
+    let stat;
+    if(this.selectedDevice.status){
+      stat= 'on';
+    }
+    else{
+      stat = 'off';
+    }
+    this.selectedDevice.image=this.selectedDevice.deviceType.typeName.replace(/\s/g, "").toLowerCase() + "_"+ stat;
     this.change = !this.change;
   }
 
