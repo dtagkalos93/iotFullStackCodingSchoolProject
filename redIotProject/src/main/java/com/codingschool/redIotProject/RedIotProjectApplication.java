@@ -7,21 +7,27 @@ import com.codingschool.redIotProject.Repositories.RoomRepository;
 import com.codingschool.redIotProject.Repositories.DeviceTypeRepository;
 import com.codingschool.redIotProject.Repositories.*;
 
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> Stashed changes
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.boot.SpringApplication.*;
 
 @SpringBootApplication
 
 public class RedIotProjectApplication {
-
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	public static void main(String[] args) {
 		run(RedIotProjectApplication.class, args);
 	}
@@ -35,6 +41,7 @@ public class RedIotProjectApplication {
 			Role user = new Role ("USER");
 			roleRepository.save(admin);
 			roleRepository.save(user);
+<<<<<<< Updated upstream
 			
 			
 			
@@ -48,6 +55,19 @@ public class RedIotProjectApplication {
 			User Aris = new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER"));
 			User Leni = new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER"));
 			User Alex = new User("alex","AlexName","AlexSurname","alex@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+=======
+
+			User u1=new User("vbalioukos","Vassilis","Balioukos","vbalioukos@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+			User u2=new User("dtagkalos","Dimitris","Tagkalos","kobe@bryant.com","123456",roleRepository.findByRole("ADMIN"));
+			User u3=new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER"));
+			u1.setPassword(bCryptPasswordEncoder.encode(u1.getPassword()));
+			u2.setPassword(bCryptPasswordEncoder.encode(u2.getPassword()));
+			u3.setPassword(bCryptPasswordEncoder.encode(u3.getPassword()));
+			userRepository.save(u1);
+			userRepository.save(u2);
+			userRepository.save(u3);
+
+>>>>>>> Stashed changes
 			//RoomRepository
 			Room l=new Room("Living Room");
 			

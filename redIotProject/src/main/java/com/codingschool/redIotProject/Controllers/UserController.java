@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< Updated upstream
+=======
+
+import java.security.Principal;
+import java.util.Base64;
+>>>>>>> Stashed changes
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +20,6 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/users")
 public class UserController {
 
 
@@ -27,10 +32,15 @@ public class UserController {
         return userService.findAll();
     }
 
+<<<<<<< Updated upstream
 
     // Returns user by id
     @GetMapping("/{id}")
     public User findOne(@PathVariable long id) {
+=======
+    @GetMapping("/users/{id}")
+    public User findOne(@PathVariable int id) {
+>>>>>>> Stashed changes
         return userService.findById(id);
     }
 
@@ -57,14 +67,20 @@ public class UserController {
 
 
     @RequestMapping("/login")
-    public Map<String,String> login(@RequestBody User user) {
-        Map<String,String> tmp= new HashMap<>();
-        tmp.put("auth",(user.getMail().equals("email") && user.getPassword().equals("password"))+"");
-        tmp.put("role", user.getRole().toString());
-        return tmp;
-
+    public boolean login(@RequestBody User user) {
+        return user.getUsername().equals("user") && user.getPassword().equals("password");
     }
 
+<<<<<<< Updated upstream
 
 
+=======
+    @RequestMapping("/user")
+    public Principal user(HttpServletRequest request) {
+        String authToken = request.getHeader("Authorization")
+                .substring("Basic".length()).trim();
+        return () ->  new String(Base64.getDecoder()
+                .decode(authToken)).split(":")[0];
+    }
+>>>>>>> Stashed changes
 }
