@@ -11,23 +11,12 @@ import {DataViewModule} from 'primeng/dataview';
 import {DialogModule} from 'primeng/dialog';
 import {PanelModule} from 'primeng/panel';
 import { HttpClientModule } from '@angular/common/http';
-import {InputSwitchModule} from 'primeng/inputswitch';
-import { FormsModule } from '@angular/forms';
-import {ButtonModule} from 'primeng/button';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { LoginComponent } from './components/login/login.component';
-import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
-import { MessagesModule } from 'primeng/components/messages/messages';
-import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MegaMenuComponent,
-    DeviceComponent,
-    HomePageComponent,
-    LoginComponent,
-    RegisterComponent
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
@@ -38,12 +27,7 @@ import { RegisterComponent } from './components/register/register.component';
     DataViewModule,
     DialogModule,
     PanelModule,
-    HttpClientModule,
-    InputSwitchModule,
-    FormsModule,
-    ButtonModule,
-    FieldsetModule,
-    MessagesModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

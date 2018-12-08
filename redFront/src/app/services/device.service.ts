@@ -10,22 +10,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DeviceService {
-  DEVICES_URL = 'http://localhost:8083/devices/';
-  ROOM_URL = 'http://localhost:8083/rooms/';
-
+  DEVICES_URL = 'https://localhost:8083/devices/';
 
 
   constructor(private httpClient: HttpClient) { }
-
-  getDevices(id: number): Observable<Device[]> {
+  getDevices(): Observable<Device[]> {
     return this.httpClient.get<any>
-      (this.ROOM_URL + id).pipe(map(response => {
-        return response.devices;
+      (this.DEVICES_URL).pipe(map(response => {
+        console.log(response);
+        return response.content;
       }));
-  }
-
-  updateDevice(device: Device) {
-    return this.httpClient.put<Device>
-            (this.DEVICES_URL + device.id, device);
   }
 }

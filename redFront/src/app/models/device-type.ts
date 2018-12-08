@@ -1,4 +1,4 @@
 export class DeviceType {
   id: number;
-  typeName: string;
+  name: string;
 }

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
-import { Room } from 'src/app/models/room';
-import { HomeService } from 'src/app/services/home.service';
-import { User } from 'src/app/models/user';
-import { UserStateService } from 'src/app/services/user-state.service';
 
 @Component({
   selector: 'app-mega-menu',
@@ -11,25 +7,18 @@ import { UserStateService } from 'src/app/services/user-state.service';
   styleUrls: ['./mega-menu.component.css']
 })
 export class MegaMenuComponent implements OnInit {
-  room: Room[];
-  constructor(private homeSercive: HomeService, private userStateService: UserStateService) { }
+
+  constructor() { }
+
   items: MenuItem[];
   ngOnInit() {
-    const user = new User();
-    user.name = 'Dimitris';
-    this.userStateService.setUser(user);
-    this.homeSercive.getRooms()
-      .subscribe(data => {
-        this.room = data;
-        this.items = [
-          {label: 'Home', routerLink: ['/home']}
-        ];
-        for (let i = 0 ; i < this.room.length; i++) {
-          console.log(this.room[i].name);
-          this.items.push({label: `${this.room[i].name}`, routerLink: [`/room/${this.room[i].id}`]});
-          }
-      });
-
+    this.items = [
+      {label: 'Home', icon: 'fa fa-fw fa-bar-chart'},
+      {label: 'Room1', icon: 'fa fa-fw fa-calendar'},
+      {label: 'Room2', icon: 'fa fa-fw fa-book'},
+      {label: 'Room3', icon: 'fa fa-fw fa-support'},
+      {label: 'Room4', icon: 'fa fa-fw fa-twitter'}
+    ];
   }
 
 }
