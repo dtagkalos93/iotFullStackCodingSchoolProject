@@ -66,5 +66,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteById(long id){ personRep.deleteById(id);}
+	
+	@Override
+	public User findByUsername(String username) {
+		User u=personRep.findByUsername(username);
+		System.out.println(">>"+username);
+		return u;
+	}
 
 }

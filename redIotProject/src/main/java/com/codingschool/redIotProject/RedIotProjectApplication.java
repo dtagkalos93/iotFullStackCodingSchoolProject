@@ -3,6 +3,7 @@ package com.codingschool.redIotProject;
 import com.codingschool.redIotProject.Entities.*;
 import com.codingschool.redIotProject.Repositories.DeviceRepository;
 import com.codingschool.redIotProject.Repositories.UserRepository;
+
 import com.codingschool.redIotProject.Repositories.RoomRepository;
 import com.codingschool.redIotProject.Repositories.DeviceTypeRepository;
 import com.codingschool.redIotProject.Repositories.*;
@@ -11,10 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.springframework.boot.SpringApplication.*;
 
@@ -24,7 +27,12 @@ public class RedIotProjectApplication {
 
 	public static void main(String[] args) {
 		run(RedIotProjectApplication.class, args);
+		//SpringApplication.run(SpringSecurityApplication.class, args);
 	}
+	
+	@Autowired
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Bean
 	ApplicationRunner init (UserRepository userRepository, DeviceRepository deviceRepository , RoomRepository roomRepository, DeviceTypeRepository devicetypeRepository, RoleRepository roleRepository ){
@@ -48,6 +56,13 @@ public class RedIotProjectApplication {
 			User Aris = new User("atasios","Aris","Tasios","lebron@james.com","123456",roleRepository.findByRole("USER"));
 			User Leni = new User("EllePpl","Eleni","Pipeli","mike@jordan.com","123456",roleRepository.findByRole("USER"));
 			User Alex = new User("alex","AlexName","AlexSurname","alex@gmail.com","123456",roleRepository.findByRole("ADMIN"));
+			
+			
+			Vassilis.setPassword(bCryptPasswordEncoder.encode(Vassilis.getPassword()));
+            Dimitris.setPassword(bCryptPasswordEncoder.encode(Dimitris.getPassword()));
+            Aris.setPassword(bCryptPasswordEncoder.encode(Aris.getPassword()));
+            Leni.setPassword(bCryptPasswordEncoder.encode(Leni.getPassword()));
+            Alex.setPassword(bCryptPasswordEncoder.encode(Alex.getPassword()));
 			//RoomRepository
 			Room l=new Room("Living Room");
 			
